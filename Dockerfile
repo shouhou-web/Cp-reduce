@@ -1,4 +1,5 @@
 FROM openjdk:8
 WORKDIR /app/
 COPY ./* ./
-cat $input | RUN javac Main.java
+javac Main.java
+cat $input | Main.class
