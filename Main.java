@@ -88,7 +88,7 @@ public class Main {
                         reduce();
                         System.out.println('R');
                     } catch (Exception e) {
-                        System.out.println("ER");
+                        System.out.println("RE");
                         break;
                     }
                     i--;
