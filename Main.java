@@ -58,8 +58,10 @@ public class Main {
             else
                 throw new Exception("RE");
         } else if (peek == ')' && N.size() >= 3) {
-            if (N.pop() == ')' && N.pop() == 'N' && N.pop() == '(')
+            if (N.pop() == ')' && N.pop() == 'N' && N.pop() == '(') {
                 N.push('N');
+                T.pop();
+            }
             else
                 throw new Exception("RE");
         } else throw new Exception("RE");
