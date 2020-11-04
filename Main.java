@@ -44,7 +44,7 @@ public class Main {
         else if (priority[i][j] == 1)
             return false; // 开始规约分析
         else
-            throw new Exception();
+            throw new Exception("E");
     }
 
     public static void reduce() throws Exception {
@@ -56,7 +56,7 @@ public class Main {
                 N.pop();
                 N.pop();
             } else
-                throw new Exception();
+                throw new Exception("RE");
         } else if (peek == ')') {
             if (T.peek() == '(')
                 T.pop();
@@ -64,13 +64,13 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-//        Scanner scan = new Scanner(System.in);
-//        String input = scan.next();
+        Scanner scan = new Scanner(System.in);
+        String input = scan.next();
 //        String input = args[0];
-        File filename = new File(args[0]);
-        InputStreamReader reader = new InputStreamReader(new FileInputStream(filename));
-        BufferedReader br = new BufferedReader(reader);
-        String input = br.readLine();
+//        File filename = new File(args[0]);
+//        InputStreamReader reader = new InputStreamReader(new FileInputStream(filename));
+//        BufferedReader br = new BufferedReader(reader);
+//        String input = br.readLine();
         input = input + '#';
         T.push('#');
         for (int i = 0; i < input.length(); i++) {
@@ -84,17 +84,15 @@ public class Main {
                     T.push(cur);
                     System.out.println("I" + cur);
                 } else {
-                    try {
-                        reduce();
-                        System.out.println('R');
-                    } catch (Exception e) {
-                        System.out.println("RE");
-                        break;
-                    }
+                    reduce();
+                    System.out.println('R');
                     i--;
                 }
             } catch (Exception e) {
-                System.out.println("E");
+                if (e.getMessage().equals("RE"))
+                    System.out.println("RE");
+                else
+                    System.out.println("E");
                 break;
             }
 
