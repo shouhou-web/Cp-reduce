@@ -6,12 +6,12 @@ import java.util.Stack;
 public class Main {
     // 1大于，0等于，-1小于，2为空值，3位结束
     public static int[][] priority = {
-            {1, -1, -1, 1, -1, 1},
-            {1, 1, -1, 1, -1, 1},
-            {-1, -1, -1, 0, -1, 1},
-            {1, 1, 2, 1, 2, 1},
-            {1, 1, 2, 1, 2, 1},
-            {-1, -1, -1, -1, -1, 3}
+            {1, -1, -1, 1, -1, 1, 2},
+            {1, 1, -1, 1, -1, 1, 2},
+            {-1, -1, -1, 0, -1, 1, 2},
+            {1, 1, 2, 1, 2, 1, 2},
+            {1, 1, 2, 1, 2, 1, 2},
+            {-1, -1, -1, -1, -1, 3, 2}
     };
 
     public static Stack<Character> N = new Stack<Character>();
@@ -54,23 +54,23 @@ public class Main {
         else if (peek == '+' || peek == '*') {
             if (N.size() >= 2) {
                 N.pop();
-                N.pop();
             } else
                 throw new Exception("RE");
         } else if (peek == ')') {
-            if (T.peek() == '(')
+            if (T.peek() == '(') {
                 T.pop();
+                N.pop();
+            }
         }
     }
 
     public static void main(String[] args) throws IOException {
-//        Scanner scan = new Scanner(System.in);
-//        String input = scan.next();
-//        String input = args[0];
-        File filename = new File(args[0]);
-        InputStreamReader reader = new InputStreamReader(new FileInputStream(filename));
-        BufferedReader br = new BufferedReader(reader);
-        String input = br.readLine();
+        Scanner scan = new Scanner(System.in);
+        String input = scan.next();
+//        File filename = new File(args[0]);
+//        InputStreamReader reader = new InputStreamReader(new FileInputStream(filename));
+//        BufferedReader br = new BufferedReader(reader);
+//        String input = br.readLine();
         input = input + '#';
         T.push('#');
         for (int i = 0; i < input.length(); i++) {
