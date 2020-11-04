@@ -49,19 +49,20 @@ public class Main {
 
     public static void reduce() throws Exception {
         char peek = T.pop();
-        if (peek == 'i')
+        if (peek == 'i') {
+            N.pop();
             N.push('N');
-        else if (peek == '+' || peek == '*') {
-            if (N.size() >= 2) {
-                N.pop();
-            } else
+        } else if ((peek == '+' || peek == '*') && N.size() >= 3) {
+            if (N.pop() == 'N' && N.pop() == peek && N.pop() == 'N')
+                N.push('N');
+            else
                 throw new Exception("RE");
-        } else if (peek == ')') {
-            if (T.peek() == '(') {
-                T.pop();
-                N.pop();
-            }
-        }
+        } else if (peek == ')' && N.size() >= 3) {
+            if (N.pop() == ')' && N.pop() == 'N' && N.pop() == '(')
+                N.push('N');
+            else
+                throw new Exception("RE");
+        } else throw new Exception("RE");
     }
 
     public static void main(String[] args) throws IOException {
@@ -82,6 +83,7 @@ public class Main {
             try {
                 if (getPriority(peek, cur)) {
                     T.push(cur);
+                    N.push(cur);
                     System.out.println("I" + cur);
                 } else {
                     reduce();
