@@ -65,12 +65,12 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        Scanner scan = new Scanner(System.in);
-        String input = scan.next();
-//        File filename = new File(args[0]);
-//        InputStreamReader reader = new InputStreamReader(new FileInputStream(filename));
-//        BufferedReader br = new BufferedReader(reader);
-//        String input = br.readLine();
+//        Scanner scan = new Scanner(System.in);
+//        String input = scan.next();
+        File filename = new File(args[0]);
+        InputStreamReader reader = new InputStreamReader(new FileInputStream(filename));
+        BufferedReader br = new BufferedReader(reader);
+        String input = br.readLine();
         input = input + '#';
         T.push('#');
         for (int i = 0; i < input.length(); i++) {
