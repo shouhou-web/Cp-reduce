@@ -64,13 +64,13 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        Scanner scan = new Scanner(System.in);
-        String input = scan.next();
+//        Scanner scan = new Scanner(System.in);
+//        String input = scan.next();
 //        String input = args[0];
-//        File filename = new File(args[0]);
-//        InputStreamReader reader = new InputStreamReader(new FileInputStream(filename));
-//        BufferedReader br = new BufferedReader(reader);
-//        String input = br.readLine();
+        File filename = new File(args[0]);
+        InputStreamReader reader = new InputStreamReader(new FileInputStream(filename));
+        BufferedReader br = new BufferedReader(reader);
+        String input = br.readLine();
         input = input + '#';
         T.push('#');
         for (int i = 0; i < input.length(); i++) {
